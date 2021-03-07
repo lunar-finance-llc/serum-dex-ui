@@ -20,7 +20,7 @@ import AppSearch from './AppSearch';
 import { getTradePageUrl } from '../utils/markets';
 
 const Wrapper = styled.div`
-  background-color: #0d1017;
+  background-color: #242438;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  color: #2abdd2;
+  color: #959CBD;
   font-weight: bold;
   cursor: pointer;
   img {
@@ -47,7 +47,8 @@ const EXTERNAL_LINKS = {
   '/developer-resources': 'https://serum-academy.com/en/developer-resources/',
   '/explorer': 'https://explorer.solana.com',
   '/srm-faq': 'https://projectserum.com/srm-faq',
-  '/swap': 'https://swap.projectserum.com',
+  '/swap': 'https://swap.stackedinvest.com',
+  '/automate': 'https://app.stackedinvest.com',
 };
 
 export default function TopBar() {
@@ -142,7 +143,6 @@ export default function TopBar() {
       <Wrapper>
         <LogoWrapper onClick={() => history.push(tradePageUrl)}>
           <img src={logo} alt="" />
-          {'SERUM'}
         </LogoWrapper>
         <Menu
           mode="horizontal"
@@ -157,7 +157,7 @@ export default function TopBar() {
           }}
         >
           <Menu.Item key={tradePageUrl} style={{ margin: '0 10px 0 20px' }}>
-            TRADE
+            Trade
           </Menu.Item>
           {!searchFocussed && (
             <Menu.Item key="/swap" style={{ margin: '0 10px' }}>
@@ -166,33 +166,44 @@ export default function TopBar() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                SWAP
+                Swap
+              </a>
+            </Menu.Item>
+          )}
+          {!searchFocussed && (
+            <Menu.Item key="/automate" style={{ margin: '0 10px' }}>
+              <a
+                href={EXTERNAL_LINKS['/automate']}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Automate
               </a>
             </Menu.Item>
           )}
           {connected && (!searchFocussed || location.pathname === '/balances') && (
             <Menu.Item key="/balances" style={{ margin: '0 10px' }}>
-              BALANCES
+              Balances
             </Menu.Item>
           )}
           {connected && (!searchFocussed || location.pathname === '/orders') && (
             <Menu.Item key="/orders" style={{ margin: '0 10px' }}>
-              ORDERS
+              Orders
             </Menu.Item>
           )}
           {connected && (!searchFocussed || location.pathname === '/convert') && (
             <Menu.Item key="/convert" style={{ margin: '0 10px' }}>
-              CONVERT
+              Convert
             </Menu.Item>
           )}
           {(!searchFocussed || location.pathname === '/list-new-market') && (
             <Menu.Item key="/list-new-market" style={{ margin: '0 10px' }}>
-              ADD MARKET
+              Add Market
             </Menu.Item>
           )}
           {!searchFocussed && (
             <Menu.SubMenu
-              title="LEARN"
+              title="Learn"
               onTitleClick={() =>
                 window.open(EXTERNAL_LINKS['/learn'], '_blank')
               }
@@ -277,7 +288,7 @@ export default function TopBar() {
           >
             <Col>
               <PlusCircleOutlined
-                style={{ color: '#2abdd2' }}
+                style={{ color: '#959CBD' }}
                 onClick={() => setAddEndpointVisible(true)}
               />
             </Col>
@@ -288,7 +299,7 @@ export default function TopBar() {
                 title="URL"
                 trigger="hover"
               >
-                <InfoCircleOutlined style={{ color: '#2abdd2' }} />
+                <InfoCircleOutlined style={{ color: '#959CBD' }} />
               </Popover>
             </Col>
             <Col>
